@@ -50,3 +50,28 @@ $(".food-slide-items").slick({
   slidesToScroll: 1,
   speed: 800
 });
+
+// PAGE TOP
+const pageTopButton = document.querySelector('.page-top');
+
+if (pageTopButton) {
+  const updatePageTopButton = () => {
+    const isVisible = window.scrollY > 300;
+
+    pageTopButton.classList.toggle('is-visible', isVisible);
+    pageTopButton.setAttribute('aria-hidden', String(!isVisible));
+    pageTopButton.setAttribute('tabindex', isVisible ? '0' : '-1');
+  };
+
+  updatePageTopButton();
+  window.addEventListener('scroll', updatePageTopButton, { passive: true });
+
+  pageTopButton.addEventListener('click', () => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    window.scrollTo({
+      top: 0,
+      behavior: reduceMotion ? 'auto' : 'smooth'
+    });
+  });
+}

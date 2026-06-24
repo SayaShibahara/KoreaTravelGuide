@@ -427,6 +427,64 @@ footer {
   color: #fff;
 }
 
+/* PAGE TOP */
+.page-top {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 82px;
+  height: 82px;
+  padding: 0;
+  border: 1px solid #d94d3f;
+  border-radius: 50%;
+  background: rgba(255, 253, 248, 0.94);
+  color: #d94d3f;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(14px);
+  transition: opacity 0.3s, visibility 0.3s, transform 0.3s,
+    background-color 0.3s, color 0.3s;
+  pointer-events: none;
+}
+
+.page-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.page-top .ph-airplane {
+  display: inline-block;
+  margin-bottom: 2px;
+  font-size: 30px;
+  line-height: 1;
+  transform: rotate(0deg);
+}
+
+.page-top span {
+  font-size: 0.65rem;
+  font-weight: bold;
+  line-height: 1.2;
+  letter-spacing: 1px;
+}
+
+.page-top:hover {
+  background: #d94d3f;
+  color: #fff;
+}
+
+.page-top:focus-visible {
+  outline: 3px solid #548c84;
+  outline-offset: 3px;
+}
+
 @media screen and (max-width: 768px) {
   .logo {
     padding-left: 20px;
@@ -491,5 +549,22 @@ footer {
 
   .food-slide-items .slick-next {
     right: -34px;
+  }
+
+  .page-top {
+    right: 16px;
+    bottom: 16px;
+    width: 68px;
+    height: 68px;
+  }
+
+  .page-top .ph-airplane {
+    font-size: 25px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-top {
+    transition: none;
   }
 }
